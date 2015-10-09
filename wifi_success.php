@@ -108,7 +108,7 @@ $_SESSION['sad'] = serialize($sad);
           <div class="container">
             <div class="navbar-header">
               <!-- Logo Starts -->
-              <a class="navbar-brand" href="#home"><img src="images/logo.png" alt="logo" width="30%" height="100%"></a>
+              <a class="navbar-brand" href="#home"><img src="images/logo.png" alt="logo" width="22%"></a>
               <!-- #Logo Ends -->
 
 
