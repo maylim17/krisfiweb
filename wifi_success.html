@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function getWifi(plan) {
+                
+                if (plan=="") {
+                    document.getElementById("txtHint").innerHTML="";
+                    return;
+                } 
+                
+                if (plan=="Hack") {
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp=new XMLHttpRequest();
+                    } else { // code for IE6, IE5
+                        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    
+                    xmlhttp.onreadystatechange=function() {
+                        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                            jsonResp = xmlhttp.responseText;   
+                            jsonObj = JSON.parse(jsonResp);
+                            
+                            document.getElementById("message").innerHTML = "WiFi promocode obtained successfully! Please proceed to our <a href='http://oa-nxt.demo.onair.aero/OA/en/laptop' target='_blank'>OnAir Portal</a> to redeem your Inflight Internet with the promocode.";
+                            document.getElementById("promoCode").innerHTML = "Promocode: " + jsonObj.promocode;
+                            document.getElementById("expiryDate").innerHTML = "Expiry Date: " + jsonObj.expiryDate;
+                        }
+                        else if (xmlhttp.status==404) {
+                            document.getElementById("message").innerHTML = "Oops, there is a problem with the system! Please contact an inflight staff for assistance.";
+                        }
+                    }
+                    xmlhttp.open("GET","http://projectkrisfi.com:8888/get_wifi.php",true);
+                    xmlhttp.send();
+                } 
+            }
+        </script>
+    </head>
+    
+    <body>
+    
+        <button onclick="getWifi('Hack')">Get your WiFi promocode for inflight Internet!</button>
+        
+        <br><br>
+        
+        <div id="message"><b>message info will be listed here.</b></div>
+        <div id="promoCode"><b>promoCode info will be listed here.</b></div>
+        <div id="expiryDate"><b>expiryDate info will be listed here.</b></div>
+    
+    </body>
+</html>

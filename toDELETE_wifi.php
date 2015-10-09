@@ -27,6 +27,7 @@ function curl_get($url, array $get = NULL, array $options = array())
 } 
 
 $output = curl_get("http://57.191.0.124/ProviderProxy/Promotions/promocode/Hack");
+echo "2";
 echo $output;
 
 ?>
