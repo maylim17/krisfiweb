@@ -5,7 +5,7 @@ require_once('Controller/MasterPassController.php');
 require_once('Controller/MasterPassHelper.php');
 
 $sad = unserialize($_SESSION['sad']);
-print_r($_SESSION);
+// print_r($_SESSION);
 $controller = new MasterPassController($sad);
 
 $sad = $controller->processParameters($_POST);
@@ -104,15 +104,8 @@ $_SESSION['sad'] = serialize($sad);
 					</a>
 				</div>
 				<div style="padding-bottom: 20px">
-					<a href="http://www.mastercard.com/mc_us/wallet/learnmore/en" target="_blank">Learn More</a>
 				</div>
 				<div>
-            		<fieldset>
-	            		<legend>Javascript</legend>
-	            			
-<pre><code id="sampleCode">
-</code></pre>
-            		</fieldset>
             	</div>
 				
 				</div>

@@ -16,7 +16,6 @@ $controller = new MasterPassController($sad);
 
 session_start();
 $_SESSION['sad'] = serialize($sad);
-echo "@@@";
 print_r($_SESSION);
 
 ?>
@@ -260,8 +259,10 @@ print_r($_SESSION);
 					<input id="pairing" value="Pairing Flow" type="submit">
 					<input id="example" value="Cart Example Flow" type="submit">
 				</fieldset>
-				
 			</form>
+			
+			<button onclick="window.location='C1_Cart.php';">C1_Cart</button>
+			
 		</div>
 		<div id="footer"></div>
 	</div>
