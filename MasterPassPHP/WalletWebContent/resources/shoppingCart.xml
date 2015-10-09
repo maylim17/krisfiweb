@@ -2,14 +2,20 @@
     <OAuthToken></OAuthToken>
     <ShoppingCart>
         <CurrencyCode>USD</CurrencyCode>
-        <Subtotal>74996</Subtotal>
+        <Subtotal>2999</Subtotal>
         <ShoppingCartItem>
+            <Description>Mineral Lipstick Shimmer by MicaBeauty</Description>
+            <Quantity>1</Quantity>
+            <Value>2999</Value>
+            <ImageURL>http://projectabc.com/images/lipstick.jpg</ImageURL>
+        </ShoppingCartItem>
+        <!--<ShoppingCartItem>
             <Description>XBøx 360©</Description>
             <Quantity>1</Quantity>
             <Value>29999</Value>
             <ImageURL>http://projectabc.com/images/xbox.jpg</ImageURL>
-        </ShoppingCartItem>
-        <ShoppingCartItem>
+        </ShoppingCartItem>-->
+        <!--<ShoppingCartItem>
             <Description>Cell Phonè™</Description>
             <Quantity>1</Quantity>
             <Value>4999</Value>
@@ -26,7 +32,7 @@
             <Quantity>1</Quantity>
             <Value>14999</Value>
             <ImageURL>http://projectabc.com/images/garmin.jpg</ImageURL>
-        </ShoppingCartItem>
+        </ShoppingCartItem>-->
     </ShoppingCart>
     <OriginUrl></OriginUrl>
 </ShoppingCartRequest>
