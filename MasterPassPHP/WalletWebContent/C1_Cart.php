@@ -5,7 +5,7 @@ require_once('Controller/MasterPassController.php');
 require_once('Controller/MasterPassHelper.php');
 
 $sad = unserialize($_SESSION['sad']);
-// print_r($_SESSION);
+print_r($_SESSION);
 $controller = new MasterPassController($sad);
 
 $sad = $controller->processParameters($_POST);
