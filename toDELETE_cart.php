@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-require_once('Controller/MasterPassController.php');
-require_once('Controller/MasterPassHelper.php');
+require_once('MasterPassPHP/WalletWebContent/Controller/MasterPassController.php');
+require_once('MasterPassPHP/WalletWebContent/Controller/MasterPassHelper.php');
 
 $sad = unserialize($_SESSION['sad']);
-// print_r($_SESSION);
+print_r($_SESSION);
 $controller = new MasterPassController($sad);
 
 $sad = $controller->processParameters($_POST);
@@ -14,31 +14,39 @@ $errorMessage = null;
 if(isset($_GET["error"])) {
 	$errorMessage = ' ';
 }
-
+echo "1";
 try {
+	
+echo "0";
 	$sad = $controller->getRequestToken();
+echo "a";
 	$sad = $controller->postShoppingCart();
+	
+echo "21";
 } catch (Exception $e) {
 	$errorMessage = MasterPassHelper::formatError($e->getMessage());
+	echo $errorMessage;
 }
 
+echo "11";
 $checkoutData = $controller->parseShoppingCartXMLPrint();
 
 $_SESSION['sad'] = serialize($sad);
 
+echo "2";
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
-	<title>Kris-Fi Check-out</title>
-	<link rel="stylesheet" type="text/css" href="Content/Site.css" />
-	<script type="text/javascript" src="Scripts/jquery-1.5.1.js"></script>
-    <script type="text/javascript" src="Scripts/common.js"></script>
-    <script type="text/javascript" src="Scripts/tooltips/commonToolTips.js"></script>
-    <script type="text/javascript" src="Scripts/tooltips/jquery-1.3.2.min.js"></script> <!-- Needed for tooltips only -->
-	<script type="text/javascript" src="Scripts/tooltips/jquery.qtip-1.0.0-rc3.min.js"></script>
+	<title>Shopping Cart Sample Flow</title>
+	<link rel="stylesheet" type="text/css" href="MasterPassPHP/WalletWebContent/Content/Site.css" />
+	<script type="text/javascript" src="MasterPassPHP/WalletWebContent/Scripts/jquery-1.5.1.js"></script>
+    <script type="text/javascript" src="MasterPassPHP/WalletWebContent/Scripts/common.js"></script>
+    <script type="text/javascript" src="MasterPassPHP/WalletWebContent/Scripts/tooltips/commonToolTips.js"></script>
+    <script type="text/javascript" src="MasterPassPHP/WalletWebContent/Scripts/tooltips/jquery-1.3.2.min.js"></script> <!-- Needed for tooltips only -->
+	<script type="text/javascript" src="MasterPassPHP/WalletWebContent/Scripts/tooltips/jquery.qtip-1.0.0-rc3.min.js"></script>
 	<script type="text/javascript" src="<?php echo $sad->lightboxUrl ?>"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
@@ -46,13 +54,10 @@ $_SESSION['sad'] = serialize($sad);
 	<div class="page">
 		<div id="header">
 			<div id="title">
-				<br>
-				<h1>Thank you for purchasing at Kris-Fi</h1>
+				<h1>Shopping Cart Sample Flow</h1>
 			</div>
 			<div id="logindisplay">&nbsp;</div>
 		</div>
-		
-				<br><br>
 		<div id="main">
 			<div id="reviewOrder">
 			 <div>
@@ -82,12 +87,9 @@ $_SESSION['sad'] = serialize($sad);
 							<div id="charge-container">
 								<ul id="charges">
 									<li id="subtotal"><span>Subtotal: </span> $<?php echo number_format((double)$checkoutData->ShoppingCart->Subtotal,2) ?></li>
-									<div style="display: none;">
-										<li id="shipping"><span>Estimated Shipping: </span> $<?php echo MasterPassController::SHIPPING ?></li>
-									</div>
+									<li id="shipping"><span>Estimated Shipping: </span> $<?php echo MasterPassController::SHIPPING ?></li>
 									<li id="tax"><span>Estimated Tax: </span> $<?php echo MasterPassController::TAX ?></li>
-									<br>
-									<li id="total"><span>Total: </span> $<?php echo number_format((double)$checkoutData->ShoppingCart->Subtotal + MasterPassController::TAX,2) ?></li>
+									<li id="total"><span>Total: </span> $<?php echo number_format((double)$checkoutData->ShoppingCart->Subtotal + MasterPassController::TAX + MasterPassController::SHIPPING,2) ?></li>
 								</ul>
 							</div>
 						</td>
@@ -106,7 +108,7 @@ $_SESSION['sad'] = serialize($sad);
 				</fieldset>
 				<div id="checkoutButtonDiv" onClick="handleBuyWithMasterPass()">
 					<a href="#">
-						<img style="float:right" src="https://www.mastercard.com/mc_us/wallet/img/en/US/mcpp_wllt_btn_chk_147x034px.png" alt="Buy with MasterPass">
+						<img src="https://www.mastercard.com/mc_us/wallet/img/en/US/mcpp_wllt_btn_chk_147x034px.png" alt="Buy with MasterPass">
 					</a>
 				</div>
 				<div style="padding-bottom: 20px">
