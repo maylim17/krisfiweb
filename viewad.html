@@ -104,8 +104,13 @@
      <div class="clock" style="margin:2em;">  
 
       </div> 
+
+      <div id="button">
+
       
-       <button type="button" class="btn btn-primary">Done Viewing!</button>
+       <button type="button" class="btn btn-primary" >Done Viewing!</button>
+
+     </div>
          
     </div>
 </div>
@@ -190,6 +195,19 @@ Copyright 2015 Kris-Fi. All rights reserved.
         
       });
     </script>
+
+    <script>
+$button = $('button');
+
+$button.hide();
+
+var timeOut = setTimeout(function() {
+
+    $button.fadeIn();
+
+}, 10000);
+
+</script>
 
 
 
