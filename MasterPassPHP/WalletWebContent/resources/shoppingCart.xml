@@ -2,12 +2,12 @@
     <OAuthToken></OAuthToken>
     <ShoppingCart>
         <CurrencyCode>USD</CurrencyCode>
-        <Subtotal>2999</Subtotal>
+        <Subtotal>53200</Subtotal>
         <ShoppingCartItem>
-            <Description>Mineral Lipstick Shimmer by MicaBeauty</Description>
+            <Description>Festive Aura Set by SK-II</Description>
             <Quantity>1</Quantity>
-            <Value>2999</Value>
-            <ImageURL>http://projectabc.com/images/lipstick.jpg</ImageURL>
+            <Value>53200</Value>
+            <ImageURL>http://projectabc.com/images/cv.jpg</ImageURL>
         </ShoppingCartItem>
         <!--<ShoppingCartItem>
             <Description>XBøx 360©</Description>

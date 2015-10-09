@@ -152,9 +152,10 @@ $_SESSION['sad'] = serialize($sad);
   <h3 class="text-center wowload fadeInUp">Redeem your Wi-Fi</h3>
   <div class="row text-center list-inline  wowload bounceInUp">
         
-        <button onclick="getWifi('Hack')">Get your Wi-Fi promo code for inflight Internet!</button>
+        <button onclick="getWifi('Hack')" class="btn btn-primary" style="width:50%">Get your Wi-Fi promo code for inflight Internet!</button>
+		
         
-				<br><br>
+				<br><br><br>
 				
 				<div id="message"><b></b></div>
 				<br>
@@ -288,15 +289,15 @@ $_SESSION['sad'] = serialize($sad);
 				<fieldset>
 					<br>
 					<p>
-						<img width="250" src="MasterPassPHP/WalletWebContent/images/lipstick.jpg"></img>
+						<img width="450" src="MasterPassPHP/WalletWebContent/images/cv.jpg"></img>
 					</p>
 					<br>
 					<p>
-						<b>Mineral Lipstick Shimmer</b> by <b>MicaBeauty</b>
+						<b>Festive Aura Set</b> by <b>SK-II</b>
 						<br>
-						<i>$29.99</i>
+						<i>SGD 532</i>
 					</p>
-					<input id="krisfipurchase" value="KrisFi Purchase" type="submit">
+					<input id="krisfipurchase" class="btn btn-primary" style="width:50%" value="Kris-Fi Purchase" type="submit">
 				</fieldset>
 			</form>
     </div>
