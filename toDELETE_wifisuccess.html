@@ -1,26 +1,5 @@
-<?php
-require_once('MasterPassPHP/WalletWebContent/Controller/MasterPassController.php');
-
-$profiles = MasterPassController::getShippingProfiles();
-$data = array();
-
-foreach($profiles as $value)
-{
-	$settings = parse_ini_file(MasterPassData::RESOURCES_PATH.MasterPassData::PROFILE_PATH.$value.MasterPassData::CONFIG_SUFFIX);
-
-	$data[$value][] = $settings;
-}
-
-$sad = new MasterPassData();
-$controller = new MasterPassController($sad);
-
-session_start();
-$_SESSION['sad'] = serialize($sad);
-// print_r($_SESSION);
-
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -49,51 +28,6 @@ $_SESSION['sad'] = serialize($sad);
 
 
 <link rel="stylesheet" href="assets/style.css">
-
-
-	<!--<link rel="stylesheet" type="text/css" href="MasterPassPHP/WalletWebContent/Content/Site.css">-->
-	<script type="text/javascript" src="MasterPassPHP/WalletWebContent/Scripts/jquery-1.5.1.js"></script> 
-	<script type="text/javascript" src="MasterPassPHP/WalletWebContent/Scripts/index.js"></script>
-	<script type="text/javascript" src="MasterPassPHP/WalletWebContent/Scripts/tooltips/jquery-1.3.2.min.js"></script> <!-- Needed for tooltips only -->
-	<script type="text/javascript" src="MasterPassPHP/WalletWebContent/Scripts/tooltips/jquery.qtip-1.0.0-rc3.min.js"></script>
-	<script type="text/javascript" src="MasterPassPHP/WalletWebContent/Scripts/tooltips/commonToolTips.js"></script>
-	
-	<script>
-	function getWifi(plan) {
-		
-		if (plan=="") {
-			document.getElementById("txtHint").innerHTML="";
-			return;
-		} 
-		
-		if (plan=="Hack") {
-			if (window.XMLHttpRequest) {
-				// code for IE7+, Firefox, Chrome, Opera, Safari
-				xmlhttp=new XMLHttpRequest();
-			} else { // code for IE6, IE5
-				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			
-			xmlhttp.onreadystatechange=function() {
-				if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-					jsonResp = xmlhttp.responseText;   
-					jsonObj = JSON.parse(jsonResp);
-					
-					document.getElementById("message").innerHTML = "Wi-Fi promo code obtained successfully! Please proceed to our <a href='http://oa-nxt.demo.onair.aero/OA/en/laptop' target='_blank'>OnAir Portal</a> to redeem your Inflight Internet with the promo code.";
-					document.getElementById("promoCode").innerHTML = "<b>Promo code: </b>" + jsonObj.promocode;
-					document.getElementById("expiryDate").innerHTML = "<b>Expiry Date: </b>" + jsonObj.expiryDate;
-				}
-				else if (xmlhttp.status==404) {
-					document.getElementById("message").innerHTML = "Oops, there is a problem with the system! Please contact an inflight staff for assistance.";
-				}
-			}
-			xmlhttp.open("GET","http://projectkrisfi.com:8888/get_wifi.php",true);
-			xmlhttp.send();
-		} 
-	}
-</script>
-
-
 
 </head>
 
@@ -145,34 +79,56 @@ $_SESSION['sad'] = serialize($sad);
 
 <h2 class="text-center wowload fadeInUp"></h2>  
   
-<h2 class="text-center wowload fadeInUp">Thank you for watching the advertisement!</h2>  
+<h2 class="text-center wowload fadeInUp">Be connected in the air </h2>  
   <div class="process">
     
     
-  <h3 class="text-center wowload fadeInUp">Redeem your Wi-Fi</h3>
+  <h3 class="text-center wowload fadeInUp">Redeem your WiFi</h3>
   <div class="row text-center list-inline  wowload bounceInUp">
         
-        <button onclick="getWifi('Hack')">Get your Wi-Fi promo code for inflight Internet!</button>
+        <button onclick="getWifi('Hack')">Get your WiFi promocode for inflight Internet!</button>
         
 				<br><br>
 				
-				<div id="message"><b></b></div>
-				<br>
-				<div id="promoCode"><b></b></div>
-				<div id="expiryDate"><b></b></div>
+				<div id="message"><b>message info will be listed here.</b></div>
+				<div id="promoCode"><b>promoCode info will be listed here.</b></div>
+				<div id="expiryDate"><b>expiryDate info will be listed here.</b></div>
         
     </div>
     
-	<br>
-	
-	
-	
-      <h3 class="text-center wowload fadeInUp">Interested in the item?</h3>
+      <h3 class="text-center wowload fadeInUp">3 simple steps to free wi-fi </h3>
   <div class="row text-center list-inline  wowload bounceInUp">
         
+        <button onclick="getWifi('Hack')">Get your WiFi promocode for inflight Internet!</button>
+        
+				<br><br>
+				
+				<div id="message"><b>message info will be listed here.</b></div>
+				<div id="promoCode"><b>promoCode info will be listed here.</b></div>
+				<div id="expiryDate"><b>expiryDate info will be listed here.</b></div>
+        
+    </div>
+    
+  </div>
+  
+  
+  
+  
+			<fieldset>
+				<legend>Redeem your WiFi</legend>
+				<br>
+				<!--<button onclick="getWifi('Hack')">Get your WiFi promocode for inflight Internet!</button>
+        
+				<br><br>
+				
+				<div id="message"><b>message info will be listed here.</b></div>
+				<div id="promoCode"><b>promoCode info will be listed here.</b></div>
+				<div id="expiryDate"><b>expiryDate info will be listed here.</b></div>-->
+			</fieldset>
+			
 			<form id="merchantInfo" name="merchantInfo" method="POST">
 				
-				<!-- START OF HIDDEN DIV -->
+				
 				<div style="display: none;">
 					<fieldset>
 						<legend>Redirect Options</legend>
@@ -283,31 +239,45 @@ $_SESSION['sad'] = serialize($sad);
 						</table>
 					</fieldset>
 				</div>
-        <!-- END OF HIDDEN DIV -->
 				
 				<fieldset>
-					<br>
-					<p>
-						<img width="250" src="MasterPassPHP/WalletWebContent/images/lipstick.jpg"></img>
-					</p>
-					<br>
-					<p>
-						<b>Mineral Lipstick Shimmer</b> by <b>MicaBeauty</b>
-						<br>
-						<i>$29.99</i>
-					</p>
+					<legend>Item Details</legend>
+					<p>ITEM DESCRIPTION</p>
 					<input id="krisfipurchase" value="KrisFi Purchase" type="submit">
 				</fieldset>
 			</form>
-    </div>
-  </div>
+			
+		</div>
+
+  
+  
+  
+  
+  
+  
+  
 </div>
 <!-- #Circe Ends -->
+
+<!-- works -->
+<div id="works"> 
+
+     
+</div>
+<!-- works -->
+
+
+
+
+
+
+
+
 
 <!-- Footer Starts -->
 <div class="footer text-center spacer">
 <p class="wowload flipInX"><a href="#"><i class="fa fa-facebook fa-2x"></i></a> <a href="#"><i class="fa fa-instagram fa-2x"></i></a> <a href="#"><i class="fa fa-twitter fa-2x"></i></a> <a href="#"><i class="fa fa-flickr fa-2x"></i></a> </p>
-Copyright 2015 Kris-Fi. All rights reserved.
+Copyright 2015 Kri-Fi. All rights reserved.
 </div>
 <!-- # Footer Ends 
 <a href="#works" class="gototop "><i class="fa fa-angle-up  fa-3x"></i></a> -->
@@ -349,23 +319,6 @@ Copyright 2015 Kris-Fi. All rights reserved.
 
 <!-- custom script -->
 <script src="assets/script.js"></script>
-	<script>
-	$('#krisfipurchase').click(function(event) {
-		var checkedCheckboxes = $('input[name="acceptedCardsCheckbox[]"]:checked').length;
-		 
-		// if(checkedCheckboxes == 0){
-		// 	alert("There are no Cards selected");
-		// 		event.preventDefault();
-		// }
-		// else{
-			$("#merchantInfo").attr("action", "MasterPassPHP/WalletWebContent/KrisFi_Purchase.php");
-			// $("#merchantInfo").attr("action", "cart.php");
-			$("#merchantInfo").submit();
-		// }
-	});
-	
-	
-	</script>
 
 </body>
 </html>
